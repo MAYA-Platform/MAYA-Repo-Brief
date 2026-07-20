@@ -1,0 +1,133 @@
+{
+  "schema": "2ndnatureai_public_release_manifest_v1",
+  "product": "MAYA Repo Brief",
+  "version": "0.2.0-beta.1",
+  "source": "verified private source commit 67c2800 plus public-launch browser-header fix",
+  "entries": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "bytes": 1159,
+      "sha256": "45d36c3d323395f951b980b167b69377762b707881f09c7ce2c0748127a7f58a"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "bytes": 28,
+      "sha256": "1f103c6a9dd07cd13a9a6f17ace6b813f47747eb9cb7e00488cb2073caaf91bb"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 128,
+      "sha256": "7afbd39cf7d1f4bd8d05a0c68c84e598253da2203b773c4d585780de0c6b9016"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 603,
+      "sha256": "1833bad183e8a5d0c371f276ccf5fd18cc3c5b360c19bd3cb603417842b2e311"
+    },
+    {
+      "path": "docs/ci/verify.yml.example",
+      "bytes": 707,
+      "sha256": "55ce005d218ccd56bdb141ddc16d6b3d66fbb8de06368bf909ecff0f61342f0f"
+    },
+    {
+      "path": "docs/images/repo-brief-mobile.png",
+      "bytes": 249640,
+      "sha256": "861c5835408b758c15b0777f71653bd2c0ed6d9e07d668b9511e8c789a66b1c5"
+    },
+    {
+      "path": "docs/images/repo-brief-result.png",
+      "bytes": 229090,
+      "sha256": "f32c895b44965bd531e220e265de441cce3de38d746866530285c45bb254c585"
+    },
+    {
+      "path": "LICENSE.txt",
+      "bytes": 1164,
+      "sha256": "66dff18c299dbf223ba9692aa0b372be2bda2fbf12485a063f6f4b2ae930704a"
+    },
+    {
+      "path": "maya_lens_server.py",
+      "bytes": 20343,
+      "sha256": "e70e43a23192b9137b3a9da7d9e87858c4a72e6c521d320ef846342933909d49"
+    },
+    {
+      "path": "OPEN - MAYA Repo Brief.cmd",
+      "bytes": 1269,
+      "sha256": "61d506621123cdcd73bf8d0ba8a675735856dfdaa97d019e504ea13723259fb5"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2876,
+      "sha256": "3b6b9cda43c40249bfc2b4b921089d324c461b38513b28760e4e8885bee5206b"
+    },
+    {
+      "path": "RELEASE_NOTES.md",
+      "bytes": 511,
+      "sha256": "e24fec0dcd099fd6df73cad145051033fe1015f3c0df92de75ac361f1383c700"
+    },
+    {
+      "path": "SAFETY_BOUNDARY.md",
+      "bytes": 1005,
+      "sha256": "dcfb90ef597c5b0c534997e1b43eb0ab2f5191ffe2cced55a15122106e41f79a"
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 1027,
+      "sha256": "12e483b3c9f80ac4fe2a5631e5ba72e3c9b08980670e8cfd9fbb4fd405d16b26"
+    },
+    {
+      "path": "src/maya_lens/__init__.py",
+      "bytes": 99,
+      "sha256": "69e9245f1332cdaa6bd887e6e0657a54662820777c14bd1e6a14b7784263b1d5"
+    },
+    {
+      "path": "src/maya_lens/public_safety.py",
+      "bytes": 17055,
+      "sha256": "239d5e68a38353133b7855f55a0c148d9352a1ee7d357c1b1a1600a727a8d6f2"
+    },
+    {
+      "path": "src/maya_lens/report.py",
+      "bytes": 33578,
+      "sha256": "941663c3966aecb431c74e18f9696edcbdfe9e853ae816a3f3c12372b84f9aa2"
+    },
+    {
+      "path": "src/maya_lens/retention.py",
+      "bytes": 5903,
+      "sha256": "5f381669348a1d2a1a324f885129e66d63f2eaf5af9187d42c11c5c35cceb6c4"
+    },
+    {
+      "path": "src/maya_lens/scanner.py",
+      "bytes": 120486,
+      "sha256": "da87628412f545ab3c72cc909550d48b53307b237837a7274c8a2f8436f70d86"
+    },
+    {
+      "path": "tests/test_maya_lens_scanner.py",
+      "bytes": 30360,
+      "sha256": "f3cbd03e42e9964fe03dde9bff20aa04509c12036418c7330aa5c6811d6474e5"
+    },
+    {
+      "path": "tests/test_maya_lens_server.py",
+      "bytes": 1930,
+      "sha256": "85f95246b765a40733abb7ce563e447934047a8230c78ebd393a9d87e5977934"
+    },
+    {
+      "path": "tests/test_public_release_contract.py",
+      "bytes": 1919,
+      "sha256": "376e3eef8b124cfd04f0de18a5b2ec0e455d79b7ee9fcb108d82593e08ee4bb5"
+    },
+    {
+      "path": "web/app.js",
+      "bytes": 25950,
+      "sha256": "98d5128540ffedff9564e830971d1e1edcfad183a48d6b1a7a996633dec741cc"
+    },
+    {
+      "path": "web/index.html",
+      "bytes": 5503,
+      "sha256": "44507ef61125cc8705f6f5c40d83cfc14c9367150067652c56b40156ae715699"
+    },
+    {
+      "path": "web/styles.css",
+      "bytes": 18206,
+      "sha256": "1beaed885ea794b4567719c2003da91542b8cb4182ad9389d602b225586170a0"
+    }
+  ]
+}

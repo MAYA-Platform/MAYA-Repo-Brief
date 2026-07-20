@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MAYA Repo Brief — See what MAYA sees</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2312100f'/%3E%3Ccircle cx='32' cy='32' r='18' fill='%23ff7a39' fill-opacity='.22'/%3E%3Ctext x='32' y='38' text-anchor='middle' font-family='Segoe UI,Arial,sans-serif' font-size='22' font-weight='700' fill='%23ffe6d7'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <main class="shell">
+    <nav class="topbar" aria-label="MAYA Repo Brief status">
+      <div class="brand-lockup">
+        <span class="brand-mark">M</span>
+        <div>
+          <strong>MAYA Repo Brief v0.2</strong>
+          <span>First-party beta candidate</span>
+        </div>
+      </div>
+      <div class="contract-chips">
+        <span>Contract v0.1</span>
+        <span>Receipts active</span>
+        <span>no cloud upload</span>
+        <span>Read-only fence</span>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Context before execution</p>
+        <h1>See what MAYA sees before repo code runs.</h1>
+        <p class="lead">Drop a repo ZIP. MAYA inspects the static risk surface, maps AI/component signals, and leaves a receipt-backed brief without installing, uploading, or executing anything.</p>
+        <div class="hero-points" aria-label="What Repo Brief surfaces before anything runs">
+          <span class="hero-pill">AI / Component BOM</span>
+          <span class="hero-pill">Action Boundary Review</span>
+          <span class="hero-pill">Public Receipt</span>
+          <span class="hero-pill">Agentic / MCP Surface</span>
+        </div>
+      </div>
+      <aside class="decision-core" aria-label="Repo Brief flow">
+        <div class="core-ring"><span>MAYA</span></div>
+        <ol class="flow-spine">
+          <li><b>1</b><span>ZIP stays local</span></li>
+          <li><b>2</b><span>Static scan only</span></li>
+          <li><b>3</b><span>Receipts generated</span></li>
+          <li><b>4</b><span>Human decides next</span></li>
+        </ol>
+        <p>Local decision support for repos, not a fake universal safety score.</p>
+      </aside>
+    </section>
+
+    <section id="dropZone" class="drop-zone" aria-labelledby="dropTitle" aria-describedby="dropDisclosure">
+      <input id="zipInput" class="file-input" type="file" accept=".zip,application/zip" tabindex="-1" aria-label="Repository ZIP file chooser" aria-describedby="dropDisclosure" />
+      <div class="pulse"></div>
+      <div class="drop-copy">
+        <p class="eyebrow">Local static review</p>
+        <h2 id="dropTitle">Drop a repo ZIP here</h2>
+        <p>MAYA scans structure, dependencies, credentials-shaped findings, binaries, network/process/filesystem surfaces, provenance, and storage footprint.</p>
+        <p id="dropDisclosure" class="local-disclosure">Repo Brief performs bounded static analysis locally. It does not execute repository code or install dependencies. It cannot prove that a repository is safe. Reports are retained locally until deleted.</p>
+        <button id="browseButton" class="file-browse-button" type="button" aria-describedby="dropDisclosure" aria-controls="zipInput" aria-label="Choose a repository ZIP file">Browse ZIP</button>
+      </div>
+      <div class="drop-helper" aria-label="What lands in the brief">
+        <div class="helper-card"><strong>Control first</strong><span>Static fence, grouped findings, no code execution.</span></div>
+        <div class="helper-card"><strong>Reader-friendly output</strong><span>HTML, Markdown, JSON, and public-safe receipts.</span></div>
+        <div class="helper-card"><strong>Modern repo signals</strong><span>MCP, agentic tooling, prompts, binaries, credential-shaped text.</span></div>
+      </div>
+    </section>
+
+    <section class="history-surface" aria-label="Recent local scan history">
+      <div class="history-head">
+        <div>
+          <p class="eyebrow">Recent local receipts</p>
+          <h2>Static history stays on this machine.</h2>
+          <p class="history-copy">Retained history stores public receipt metadata and report links locally until deleted. Raw uploaded ZIPs are temporary and are not retained by default.</p>
+          <p id="historySummary" class="history-summary">Loading retained scans.</p>
+        </div>
+        <div class="history-actions">
+          <div class="fence">HTML + Markdown + JSON receipts</div>
+          <button id="clearHistoryButton" type="button" class="secondary-button" disabled>Clear all</button>
+        </div>
+      </div>
+      <div class="history-grid" id="historyGrid" tabindex="-1">
+        <article class="history-card empty">
+          <strong>No local scans yet</strong>
+          <span>Run a repo ZIP and the latest receipts land here for quick recall.</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="status" class="status hidden" role="status" aria-live="polite" tabindex="-1"></section>
+    <section id="results" class="results hidden" aria-live="polite"></section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

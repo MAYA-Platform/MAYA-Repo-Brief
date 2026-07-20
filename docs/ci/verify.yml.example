@@ -1,0 +1,25 @@
+name: Verify MAYA Repo Brief
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12', '3.13']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m py_compile src/maya_lens/*.py maya_lens_server.py
+      - run: python tests/test_maya_lens_scanner.py
+      - run: python tests/test_maya_lens_server.py
+      - run: python tests/test_public_release_contract.py
+      - run: node --check web/app.js

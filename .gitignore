@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+reports/
+data/
+tests/__runtime_tmp_maya_lens_scanner/
+*.log
+.DS_Store
+Thumbs.db
