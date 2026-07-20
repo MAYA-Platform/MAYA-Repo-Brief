@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -49,9 +51,41 @@ class PublicReleaseContractTests(unittest.TestCase):
 
     def test_release_manifest_has_no_private_source_paths(self):
         manifest = json.loads((ROOT / "PUBLIC_RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
-        rendered = json.dumps(manifest)
-        for marker in ("C:/Users/", "E:/MAYA_BULK", "MAYA Founder Files", "2ndnatureai-maya-beta"):
-            self.assertNotIn(marker, rendered)
+        for entry in manifest.get("files", []):
+            relative = Path(entry.get("path", ""))
+            self.assertFalse(relative.is_absolute())
+            self.assertNotIn("..", relative.parts)
+
+    def test_public_tree_excludes_non_public_vocabulary(self):
+        blocked = {
+            "9ce00b27299cbd844c8a86508251fcdde9d040b9b1681ffd088580d489510628",
+            "02adfd2e6940ca9602c65f4803f88c5c2b3540704ec56f37935ad933dbda1deb",
+            "565a7aacd87653c32e0e2ba361d76cb5589ad9aa639e22349bb370479238eef1",
+            "59458508a0827cff5f80ed091ebd8808fbe67c97357b58ca00a278e7359dec20",
+            "386a85d8c88778b00b1355608363c7e3078857f3e9633cfd0802d3bf1c0b5b83",
+            "8cfde6efdfc4ed5ab1f6acbbd1ba49bf31932f84d0a4c090eb41c7d151e8b180",
+            "6fef84656cd36b8a6daf342e5d73d71a146de9457e80f12f0bc611a40b688666",
+            "ca83ebffa52a314b0f8d0b997a7716c968f5527d27bba95b6a76609aa04f3c0b",
+            "a8cc7381b5deac8e2591ef0ac6ab2f6e748392f6da5b1cbba0596eda65e98b1e",
+            "2d687e55e9ea7a94381713674cfb585b14495dc17d98c4c3c24b0e4fed77578e",
+            "92146185ba55f681a0118969b252ce3a2449f8b20f3463b397b3da136bc6d6a7",
+        }
+        allowed_extensions = {".css", ".html", ".js", ".json", ".md", ".py", ".txt"}
+        violations = []
+        for path in ROOT.rglob("*"):
+            if not path.is_file() or ".git" in path.parts or path.suffix.lower() not in allowed_extensions:
+                continue
+            text = path.read_text(encoding="utf-8", errors="ignore").lower()
+            tokens = re.findall(r"[a-z0-9_.-]+", text)
+            words = re.findall(r"[a-z0-9]+", text)
+            candidates = set(tokens)
+            for width in range(2, 5):
+                candidates.update(" ".join(words[index:index + width]) for index in range(len(words) - width + 1))
+            for candidate in candidates:
+                digest = hashlib.sha256(candidate.encode("utf-8")).hexdigest()
+                if digest in blocked:
+                    violations.append(f"{path.relative_to(ROOT)}:{digest[:12]}")
+        self.assertEqual(violations, [])
 
 
 if __name__ == "__main__":

@@ -451,7 +451,6 @@ PUBLIC_PROJECTION_SCHEMA = {
             "max_severity": str,
         }),
         "recommended_actions": ("list", str),
-        "founder_actions": ("list", str),
     },
     "agentic_surface": {
         "version": str,

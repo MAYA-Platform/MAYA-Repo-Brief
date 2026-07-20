@@ -23,18 +23,11 @@ def _axis_status_label(axis: dict[str, Any]) -> str:
 
 
 def _public_review_label(value: Any, fallback: str = "Repo Brief review") -> str:
-    text = str(value or fallback)
-    return (
-        text.replace("Gatekeeper + Skill Intake", "MAYA policy review")
-        .replace("Gatekeeper", "Manual safety review")
-        .replace("Skill Intake", "MAYA pattern review")
-        .replace("founder", "recommended")
-        .replace("Founder", "Recommended")
-    )
+    return str(value or fallback)
 
 
 def _recommended_actions(triage: dict[str, Any]) -> list[str]:
-    return list(triage.get("recommended_actions") or triage.get("founder_actions") or [])
+    return list(triage.get("recommended_actions") or [])
 
 
 def render_markdown_report(result: dict[str, Any]) -> str:

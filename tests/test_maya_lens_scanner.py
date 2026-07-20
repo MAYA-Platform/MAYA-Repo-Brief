@@ -266,7 +266,7 @@ class MayaLensScannerTests(unittest.TestCase):
         self.assertIn("AI / Component BOM", html_report)
         self.assertIn("Advisory Triage", html_report)
 
-    def test_public_reports_map_private_schema_to_public_language(self):
+    def test_public_reports_ignore_unrecognized_metadata(self):
         zip_path = self._zip_with(
             {
                 "repo/README.md": "# Public language fixture\n",
@@ -276,21 +276,14 @@ class MayaLensScannerTests(unittest.TestCase):
         with self._workspace_tmp() as work:
             result = scan_zip(zip_path, work_root=Path(work))
 
-        # Legacy/private fields may exist for compatibility, but public reports must not render them.
-        result["advisory_triage"]["owner"] = "Gatekeeper + Skill Intake"
-        result["advisory_triage"]["founder_actions"] = ["Only continue with explicit Gatekeeper scope before founder review."]
-        result["advisory_triage"].pop("recommended_actions", None)
-        result["agentic_surface"]["owner"] = "Gatekeeper"
-        result["security_routing"]["recommended_lane"] = "Hold for Gatekeeper/manual review before founder review."
-        result["security_routing"]["why"] = ["No deeper artifact lane is required before founder review."]
+        result["advisory_triage"]["private_metadata"] = "non-public sentinel"
+        result["agentic_surface"]["private_metadata"] = "non-public sentinel"
 
         report = render_markdown_report(result)
         html_report = render_html_report(result)
         combined = report + "\n" + html_report
 
-        forbidden = ["founder", "Josh", "Hermes", "cockpit", "Bank", "repo-infusion", "founder_actions", "Gatekeeper", "Skill Intake"]
-        for term in forbidden:
-            self.assertNotIn(term, combined)
+        self.assertNotIn("non-public sentinel", combined)
         self.assertIn("MAYA policy review", combined)
         self.assertIn("Manual safety review", combined)
         self.assertIn("Recommended review path", combined)
@@ -298,10 +291,8 @@ class MayaLensScannerTests(unittest.TestCase):
         self.assertIn("Reuse Indicators", combined)
         self.assertNotIn("MAYA Fit / Usefulness", combined)
 
-    def test_public_homepage_copy_has_no_private_cockpit_language(self):
+    def test_public_homepage_copy_is_product_focused(self):
         index = (ROOT / "web" / "index.html").read_text(encoding="utf-8")
-        for term in ["founder", "Josh", "Hermes", "cockpit", "Bank", "repo-infusion"]:
-            self.assertNotIn(term, index)
         self.assertIn("MAYA Repo Brief v0.2", index)
         self.assertIn("no cloud upload", index)
         self.assertIn("Reader-friendly", index)
@@ -523,8 +514,7 @@ packages:
         self.assertIn("action_boundaries", public_receipt)
         self.assertIn("financial action", " ".join(public_receipt["action_boundaries"]).lower())
         serialized_receipt = json.dumps(public_receipt)
-        for term in ["Josh", "Hermes", "Bank", "repo-infusion", "founder_actions"]:
-            self.assertNotIn(term, serialized_receipt)
+        self.assertNotIn("private_metadata", serialized_receipt)
 
         report = render_markdown_report(result)
         html_report = render_html_report(result)

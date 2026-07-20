@@ -1577,12 +1577,12 @@ def build_agentic_surface(
 
     posture = "reference_only"
     if counts["mcp_server"] or counts["agent_instruction"] or counts["workflow_automation"]:
-        posture = "gatekeeper_review"
+        posture = "policy_review"
     if security_routing.get("decision") == "block_review_before_any_run":
         posture = "hold"
 
     owner = "Repo Brief review"
-    if posture in {"gatekeeper_review", "hold"}:
+    if posture in {"policy_review", "hold"}:
         owner = "MAYA policy review"
     elif counts["security_scanner"] or counts["model_or_prompt_asset"]:
         owner = "MAYA pattern review"
@@ -1642,7 +1642,7 @@ def build_action_boundary_review(
     governance_surface: dict[str, Any],
     security_routing: dict[str, Any],
 ) -> dict[str, Any]:
-    """Build MAYA-owned action-boundary receipt metadata from Bank safety patterns.
+    """Build action-boundary receipt metadata from static-analysis safety patterns.
 
     Static-only. This extracts authority-class signals; it never grants execution permission.
     """

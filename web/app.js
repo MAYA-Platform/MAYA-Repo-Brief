@@ -77,11 +77,7 @@ function formatScanIdForDisplay(value, maxLength = 28) {
 }
 
 function publicReviewLabel(value, fallback = 'Repo Brief review') {
-  const text = String(value || fallback);
-  return text
-    .replace(/Gatekeeper \+ Skill Intake/g, 'MAYA policy review')
-    .replace(/Gatekeeper/g, 'Manual safety review')
-    .replace(/Skill Intake/g, 'MAYA pattern review');
+  return String(value || fallback);
 }
 
 function firstValue(...values) {
