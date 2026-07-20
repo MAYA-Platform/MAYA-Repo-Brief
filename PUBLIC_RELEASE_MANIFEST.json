@@ -1,8 +1,8 @@
 {
   "schema": "2ndnatureai_public_release_manifest_v1",
   "product": "MAYA Repo Brief",
-  "version": "0.2.0-beta.1",
-  "source": "verified private source commit 67c2800 plus public-launch browser-header fix",
+  "version": "0.2.0-beta.2",
+  "source": "verified private source commit 251c00e plus standalone public-release metadata",
   "entries": [
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
@@ -46,8 +46,8 @@
     },
     {
       "path": "maya_lens_server.py",
-      "bytes": 20343,
-      "sha256": "e70e43a23192b9137b3a9da7d9e87858c4a72e6c521d320ef846342933909d49"
+      "bytes": 20368,
+      "sha256": "6fd974b0f317cb3756a16d4827c434bf8712eb11549a886f0c218cc9cdd20055"
     },
     {
       "path": "OPEN - MAYA Repo Brief.cmd",
@@ -61,8 +61,8 @@
     },
     {
       "path": "RELEASE_NOTES.md",
-      "bytes": 511,
-      "sha256": "e24fec0dcd099fd6df73cad145051033fe1015f3c0df92de75ac361f1383c700"
+      "bytes": 923,
+      "sha256": "32e00b7301e7606a839dc97e38907043dad364230bc03ea5cfdb11efefc92dbb"
     },
     {
       "path": "SAFETY_BOUNDARY.md",
@@ -106,18 +106,18 @@
     },
     {
       "path": "tests/test_maya_lens_server.py",
-      "bytes": 1930,
-      "sha256": "85f95246b765a40733abb7ce563e447934047a8230c78ebd393a9d87e5977934"
+      "bytes": 2065,
+      "sha256": "2de07610ba28b5ec7d0bd44e888ee20faa703766a1064e5e8c0c8d1067b9c71a"
     },
     {
       "path": "tests/test_public_release_contract.py",
-      "bytes": 1919,
-      "sha256": "376e3eef8b124cfd04f0de18a5b2ec0e455d79b7ee9fcb108d82593e08ee4bb5"
+      "bytes": 2620,
+      "sha256": "24c62c90e05d9076d4618a234d37ef5425b7d8e88b0bcebbeab0f2c64e2c9b4d"
     },
     {
       "path": "web/app.js",
-      "bytes": 25950,
-      "sha256": "98d5128540ffedff9564e830971d1e1edcfad183a48d6b1a7a996633dec741cc"
+      "bytes": 26300,
+      "sha256": "e03c466473524048a92a92d4b15503406cc0b59c58c9c3b8179251bc5f8e2292"
     },
     {
       "path": "web/index.html",
@@ -126,8 +126,8 @@
     },
     {
       "path": "web/styles.css",
-      "bytes": 18206,
-      "sha256": "1beaed885ea794b4567719c2003da91542b8cb4182ad9389d602b225586170a0"
+      "bytes": 18250,
+      "sha256": "a98f728d6a5c7acc0cbe9acf18c3dcbe07ab4d5b580f2ed95242086ad3adb145"
     }
   ]
 }

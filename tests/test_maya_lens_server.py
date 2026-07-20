@@ -30,6 +30,8 @@ class MayaLensServerTests(unittest.TestCase):
         self.assertIn("frame-ancestors 'none'", headers["Content-Security-Policy"])
         self.assertIn("camera=()", headers["Permissions-Policy"])
         self.assertIn("microphone=()", headers["Permissions-Policy"])
+        self.assertIn("serial=()", headers["Permissions-Policy"])
+        self.assertIn("bluetooth=()", headers["Permissions-Policy"])
 
     def test_no_browser_does_not_open_ui_when_existing_server_is_alive(self):
         def fail_open_ui():

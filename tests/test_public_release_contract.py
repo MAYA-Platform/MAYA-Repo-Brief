@@ -37,6 +37,16 @@ class PublicReleaseContractTests(unittest.TestCase):
         ):
             self.assertIn(header, source)
 
+    def test_mobile_history_keeps_touch_target_and_full_scan_id_semantics(self):
+        styles = (ROOT / "web" / "styles.css").read_text(encoding="utf-8")
+        app = (ROOT / "web" / "app.js").read_text(encoding="utf-8")
+        mobile_css = styles.split("@media (max-width: 760px)", 1)[1].split("@media", 1)[0]
+        self.assertRegex(mobile_css, r"#clearHistoryButton\s*\{[^}]*min-height:\s*44px")
+        self.assertIn("function formatScanIdForDisplay", app)
+        self.assertIn("formatScanIdForDisplay(item.scan_id", app)
+        self.assertIn('title="${escapeHtml(item.scan_id || \'retained scan\')}"', app)
+        self.assertIn('data-scan-id="${escapeHtml(item.scan_id || \'\')}"', app)
+
     def test_release_manifest_has_no_private_source_paths(self):
         manifest = json.loads((ROOT / "PUBLIC_RELEASE_MANIFEST.json").read_text(encoding="utf-8"))
         rendered = json.dumps(manifest)

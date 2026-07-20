@@ -68,6 +68,14 @@ function formatStamp(value) {
   return date.toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
 }
 
+function formatScanIdForDisplay(value, maxLength = 28) {
+  const text = String(value || 'retained scan');
+  if (text.length <= maxLength) return text;
+  const headLength = Math.ceil((maxLength - 1) / 2);
+  const tailLength = maxLength - 1 - headLength;
+  return `${text.slice(0, headLength)}…${text.slice(-tailLength)}`;
+}
+
 function publicReviewLabel(value, fallback = 'Repo Brief review') {
   const text = String(value || fallback);
   return text
@@ -315,7 +323,7 @@ function renderHistory(items = []) {
     const state = normalizeState(item.approved_final_state || item.status, 'Review');
     return `
     <article class="history-card">
-      <strong title="${escapeHtml(item.scan_id || 'retained scan')}">${escapeHtml(item.scan_id || 'retained scan')}</strong>
+      <strong title="${escapeHtml(item.scan_id || 'retained scan')}">${escapeHtml(formatScanIdForDisplay(item.scan_id || 'retained scan'))}</strong>
       <span>${escapeHtml(formatStamp(item.completed_at))}</span>
       ${renderInlineMeta([['State', state], ['Receipt', item.public_receipt_version || 'n/a'], ['SHA-256', item.input_sha256 ? `${item.input_sha256.slice(0, 12)}...` : 'n/a']])}
       <div class="history-links">
