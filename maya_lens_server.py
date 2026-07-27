@@ -47,6 +47,7 @@ from maya_lens.public_safety import PUBLIC_BLOCKED, build_public_projection
 from maya_lens.report import write_reports
 from maya_lens.retention import RetainedScanHistory, history_record, validate_scan_id
 from maya_lens.scanner import scan_zip
+from maya_lens.universal_scan import universal_scan
 
 
 class RequestRejected(RuntimeError):
@@ -435,7 +436,7 @@ def main() -> int:
     parser.add_argument("--no-browser", action="store_true", help="Start server without opening browser")
     args = parser.parse_args()
     if args.scan:
-        result = build_public_projection(scan_zip(Path(args.scan)))
+        result = build_public_projection(universal_scan(Path(args.scan)))
         reports = write_reports(result, REPORTS)
         result["reports"] = build_public_projection({"reports": reports}).get("reports", {})
         retained_history().append(history_record(result, reports))

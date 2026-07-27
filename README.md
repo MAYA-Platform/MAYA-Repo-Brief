@@ -1,5 +1,7 @@
 # MAYA Repo Brief
 
+**Universal update auditor.** Scan any file for hidden AI features, credential leaks, and security risks before you install — ZIP, .exe, .msi, .apk, .dmg, .deb, .rpm, and more. 100% local, zero execution, zero dependencies.
+
 **See what MAYA sees before repo code runs.**
 
 MAYA Repo Brief is a local repository ZIP scanner for bounded static analysis. It inspects archive structure and selected source signals, then produces public-safe Markdown, HTML, and JSON receipts without executing repository code or installing dependencies.
