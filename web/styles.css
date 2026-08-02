@@ -96,7 +96,6 @@ button:disabled { opacity:.52; cursor:not-allowed; transform:none; }
 .history-card.empty { place-items:start; }
 .history-meta, .history-links, .surface-chip-row, .actions { display:flex; flex-wrap:wrap; gap:8px; }
 .actions { margin-top:32px; }
-.actions button:hover, .actions .link-button:hover { transform:none; }
 .inline-meta-row, .inline-signal-row { display:flex; flex-wrap:wrap; gap:7px 0; margin:9px 0 14px; color:rgba(243,235,229,.74); font-size:12px; line-height:1.45; }
 .history-card .inline-meta-row { margin:2px 0 0; gap:5px 0; font-size:11px; }
 .inline-meta, .inline-signal { display:inline-flex; align-items:baseline; white-space:nowrap; color:rgba(232,221,211,.78); margin-right:14px; }
