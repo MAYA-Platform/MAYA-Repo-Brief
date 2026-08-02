@@ -436,7 +436,14 @@ def main() -> int:
     parser.add_argument("--no-browser", action="store_true", help="Start server without opening browser")
     args = parser.parse_args()
     if args.scan:
-        result = build_public_projection(universal_scan(Path(args.scan)))
+        scan_path = Path(args.scan)
+        if not scan_path.exists():
+            print(f"MAYA Repo Brief error: scan target not found: {scan_path}", file=sys.stderr)
+            return 2
+        result = build_public_projection(universal_scan(scan_path))
+        if not result.get("disclaimer"):
+            print("MAYA Repo Brief error: scan produced an incomplete result; no report written.", file=sys.stderr)
+            return 2
         reports = write_reports(result, REPORTS)
         result["reports"] = build_public_projection({"reports": reports}).get("reports", {})
         retained_history().append(history_record(result, reports))
