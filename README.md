@@ -14,6 +14,8 @@ MAYA Repo Brief is a local repository ZIP scanner for bounded static analysis. I
 
 ![MAYA Repo Brief scan result](docs/images/repo-brief-result.png)
 
+**Live demo:** [watch a repo scan in action](docs/images/rb-demo.mp4) — upload a ZIP, watch the scan run, see the decision brief.
+
 ## What it catches
 
 - **ZIP traversal, path collision, symlink, device-name, compression-ratio, and extraction-budget hazards**, the archive tricks that hide malware in plain sight
